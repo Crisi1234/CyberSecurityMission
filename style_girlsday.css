@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+.timer {
+    font-size: 68px; /* Größere Schrift für den Timer */
+    margin-top: 20px;
+}
+
+.red {
+    color: red;
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 14px; /* Kleinere Schrift für die Ergebnisnachrichten */
+    font-weight: bold;
+    color: black; /* Textfarbe schwarz */
+}
+
+.nextMissionBtnContainer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.nextMissionBtn {
+    padding: 10px 20px;
+    background-color: #e2ece2;
+    color: rgb(87, 5, 66);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 50px;
+    display: none; /* Verstecke den Button standardmäßig */
+}
+
+.nextMissionBtn.show {
+    display: block; /* Zeige den Button, wenn erforderlich */
+}
+
+.hacked-background {
+    background-color: black; /* Schwarzer Hintergrund, wenn "You've been hacked" angezeigt wird */
+}
+
+.hacked-numbers-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* Vollständige Breite des Bildschirms */
+    height: 100%; /* Vollständige Höhe des Bildschirms */
+    z-index: -1;
+    overflow: hidden; /* Verhindert, dass Zahlen außerhalb des Bildschirms angezeigt werden */
+}
+
+.hacked-text {
+    color: lawngreen;
+    font-size: 20px;
+    position: absolute; /* Positionierung relativ zum Container */
+    animation: fallingNumbers 5s linear infinite;
+}
+
+.hacked-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: lawngreen;
+    font-size: 120px;
+    opacity: 1;
+}
+
+@keyframes fallingNumbers {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}

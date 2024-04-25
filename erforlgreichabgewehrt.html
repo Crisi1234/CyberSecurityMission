@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password</title>
+    <link rel="stylesheet" href="style_girlsday.css">
+    <style>
+        .result {
+            color: rgb(168, 10, 108); /* Setzt die Textfarbe auf Pink */
+            font-size: 100px;
+        }
+        #nextMissionBtn {
+            background-color: pink; /* Hintergrundfarbe auf Pink setzen */
+            color: white; /* Textfarbe auf Weiß setzen */
+            border: none; /* Keine Rahmen anzeigen */
+            padding: 10px 20px; /* Innenabstand des Buttons festlegen */
+            border-radius: 5px; /* Abrundung der Ecken */
+            cursor: pointer; /* Zeige einen Zeigercursor beim Überfahren an */
+            margin: 15px; /* korrigiere Leerzeichen */
+            transition: background-color 0.3s; /* Übergang für die Hintergrundfarbe hinzufügen */
+        }
+        #fireworks-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes fireworks {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: pink;
+            border-radius: 50%;
+            animation: fireworks 1.5s ease-in-out infinite;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <div id="result" class="result">Erfolgreich abgewehrt </div>
+        <button id="nextMissionBtn" onclick="continueToNextMission()">Weiter zur nächsten Mission</button>
+    </div>
+    <div id="fireworks-container"></div>
+    <script>
+        function createFirework() {
+            const fireworksContainer = document.getElementById("fireworks-container");
+            const firework = document.createElement("div");
+            firework.classList.add("firework");
+            firework.style.left = Math.random() * window.innerWidth + "px";
+            firework.style.top = Math.random() * window.innerHeight + "px";
+            fireworksContainer.appendChild(firework);
+
+            setTimeout(() => {
+                firework.remove();
+            }, 1500);
+        }
+
+        function startFireworks() {
+            setInterval(createFirework, 200);
+        }
+        startFireworks();
+
+        function continueToNextMission() {
+            window.location.href = 'mission2.html';
+        }
+    </script>
+</body>
+</html>

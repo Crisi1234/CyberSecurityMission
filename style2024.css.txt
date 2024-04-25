@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* Hintergrundfarbe */
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+.timer {
+    font-size: 68px; /* Größere Schrift für den Timer */
+    margin-top: 20px;
+}
+
+.red {
+    color: red;
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 60px; /* Größere Schrift für die Ergebnisnachrichten */
+    font-weight: bold;
+}
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Zahlenregen sollte keine Interaktion blockieren */
+    z-index: -1;
+}
+
+.hacked-text {
+    color: lawngreen;
+    font-size: 140px;
+}
+.nextMissionBtnContainer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.nextMissionBtn {
+    padding: 10px 20px;
+    background-color: #e2ece2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    display: block;
+    margin: 0 auto; /* Zum Zentrieren */
+    transition: background-color 0.3s;
+}
+
+.nextMissionBtn:hover {
+    background-color: #cc512b;
+}

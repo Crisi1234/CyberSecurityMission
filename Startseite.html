@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password</title>
+    <link rel="stylesheet" href="style_girlsday.css">
+    <style>
+        #passwordText {
+            color: rgb(168, 10, 108); /* Setzt die Textfarbe auf Pink */
+            font-size: 50px;
+        }
+        #nextMissionBtn {
+            background-color: pink; /* Hintergrundfarbe auf Pink setzen */
+            color: white; /* Textfarbe auf Weiß setzen */
+            border: none; /* Keine Rahmen anzeigen */
+            padding: 10px 20px; /* Innenabstand des Buttons festlegen */
+            border-radius: 5px; /* Abrundung der Ecken */
+            cursor: pointer; /* Zeige einen Zeigercursor beim Überfahren an */
+            margin: 15px; /* korrigiere Leerzeichen */
+            position: center;
+            transition: background-color 0.3s; /* Übergang für die Hintergrundfarbe hinzufügen */
+        }
+        #checkPasswordBtn
+        {
+            background-color: pink; /* Hintergrundfarbe auf Pink setzen */
+            color: white; /* Textfarbe auf Weiß setzen */
+            border: none; /* Keine Rahmen anzeigen */
+            padding: 10px 20px; /* Innenabstand des Buttons festlegen */
+            border-radius: 5px; /* Abrundung der Ecken */
+            cursor: pointer; /* Zeige einen Zeigercursor beim Überfahren an */
+            margin: 15px; /* korrigiere Leerzeichen */
+            transition: background-color 0.3s; /* Übergang für die Hintergrundfarbe hinzufügen */
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <h1 id="passwordText">Sicheres Passwort eingeben</h1>
+        <form id="passwordForm">
+            <input type="password" id="passwordInput" placeholder="Passwort eingeben">
+            <button type="submit" id="checkPasswordBtn">Passwort überprüfen</button>
+        </form>
+        <div id="timer" class="timer">01:00</div>
+        <div id="result" class="result"></div>
+        <div id="missionStatus"></div>
+        <button id="nextMissionBtn" style="display: none;" onclick="continueToNextMission()">Weiter zur nächsten Mission</button>
+    </div>
+    <script src="backend.js"></script>
+</body>
+</html>
+

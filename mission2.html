@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Inbox</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #9b5a87; /* Hintergrundfarbe des gesamten Dokuments */
+            margin: 0; /* Rand des Dokuments entfernen */
+            padding: 0; /* Innenabstand des Dokuments entfernen */
+        }
+        h1 {
+            text-align: center;
+            color: #e9e8e8; /* Textfarbe für die Überschrift */
+            margin-top: 20px; /* Oberen Abstand zur Überschrift hinzufügen */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ddc9d8; /* Hintergrundfarbe der Tabelle */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Schatten für die Tabelle hinzufügen */
+            border-radius: 8px; /* Abgerundete Ecken für die Tabelle */
+            overflow: hidden; /* Überlauf verbergen */
+            margin: 20px auto; /* Zentriere die Tabelle horizontal */
+        }
+        th, td {
+            border: 1px solid #36031b; /* Rahmen um Zellen */
+            padding: 12px; /* Innenabstand für Zellen */
+            text-align: left; /* Text links ausrichten */
+        }
+        th {
+            background-color: #cfa4c6; /* Hintergrundfarbe für Tabellenüberschriften */
+        }
+        #missionComplete {
+            background-color: #cfa4c6; /* Hintergrundfarbe auf Pink setzen */
+            color: white; /* Textfarbe auf Weiß setzen */
+            border: none; /* Keine Rahmen anzeigen */
+            padding: 10px 20px; /* Innenabstand des Buttons festlegen */
+            border-radius: 5px; /* Abrundung der Ecken */
+            cursor: pointer; /* Zeige einen Zeigercursor beim Überfahren an */
+            margin: 15px auto; /* Zentriere den Button horizontal */
+            display: block; /* Button als Blockelement anzeigen */
+            transition: background-color 0.3s; /* Übergang für die Hintergrundfarbe hinzufügen */
+        }
+
+        #missionComplete:hover {
+            background-color: hotpink; /* Hintergrundfarbe beim Überfahren auf Hotpink ändern */
+        }
+
+        #phishingForm {
+            text-align: center; /* Zentriere den Text innerhalb des Formulars */
+            margin-top: 20px; /* Oberen Abstand zum vorherigen Element hinzufügen */
+        }
+
+        #phishingForm label {
+            display: block; /* Jede Checkbox auf eine neue Zeile anzeigen */
+            margin-bottom: 5px; /* Unterabstand zwischen den Checkboxen hinzufügen */
+        }
+
+        .container {
+            text-align: center; /* Zentriere den Text */
+            margin-top: 20px; /* Oberen Abstand zum vorherigen Element */
+        }
+    </style>
+</head>
+<body>
+    <h1>Email Inbox</h1>
+    <table>
+        <tr>
+            <th>Von</th>
+            <th>Betreff</th>
+            <th>Erhalten</th>
+            <th>Nr</th>
+        </tr>
+        
+        <script>
+            // Annahme: Die serverData Variable wird von der serverseitigen Anwendung bereitgestellt
+            // Sie enthält die E-Mail-Daten im JSON-Format
+            var emails = [
+                { from: "mail@theinstagram.com", subject: "Verifizierung des Accounts erforderlich verifizieren", content: "Erhalten am: 24. April 2024 um 10:00 Uhr", image: "Email4.png" },
+                { from: "instagran@support.com", subject: "Sie haben eine neue Nachricht", content: "25. April 2024 um 14:30 Uhr", image: "Email2.png"},
+                { from: "help@amazon.cfcf", subject: "Validieren die Ihre Daten", content: "22. April 2024 um 14:30 Uhr", image: "Amazon3.png" },
+                { from: "security@mail.instragram.com", subject: "Wir aktualisierungen unere Nutzungsbedingungen und Datenschutzrichtlinie", content: "22. April 2024 um 14:30 Uhr", image: "Echt.png" },
+                { from: "amazon@marketplace.de", subject: "Ihre Bestellung wurde storniert", content: "23. April 2024 um 14:30 Uhr", image: "Email5.png" },
+                { from: "service@int.paypal.com", subject: "Ihre Telefonnummer ist nicht mehr gültig", content: "23. April 2024 um 14:30 Uhr", image: "Email6.png" },
+                { from: "support@anazon.com", subject: "Ihre Mithilfe ist erforderlich", content: "21. April 2024 um 14:30 Uhr", image: "Email7.png" }
+            ];
+
+            var table = document.querySelector("table");
+
+            emails.forEach(function(email, index) {
+                var row = table.insertRow();
+                var fromCell = row.insertCell(0);
+                var subjectCell = row.insertCell(1);
+                var contentCell = row.insertCell(2);
+                var nrCell = row.insertCell(3);
+
+                fromCell.innerHTML = email.from;
+                subjectCell.innerHTML = email.subject;
+                contentCell.innerHTML = email.content;
+                nrCell.innerHTML = index + 1;
+
+                // Füge einen Klickereignislistener zum <tr>-Element hinzu
+                row.addEventListener("click", function() {
+                    window.location.href = email.image; // Leite zur Bild-URL weiter
+                });
+            });
+
+            function checkPhishing() {
+                var checkboxes = document.querySelectorAll('#phishingForm input[type="checkbox"]');
+                var email4CheckboxChecked = false;
+                var allOtherCheckboxesChecked = true;
+                checkboxes.forEach(function(checkbox) {
+                    if (checkbox.parentElement.textContent.includes("Email 4")) {
+                        if (!checkbox.checked) {
+                            email4CheckboxChecked = true;
+                        }
+                    } else {
+                        if (!checkbox.checked) {
+                            allOtherCheckboxesChecked = false;
+                        }
+                    }
+                });
+                if (email4CheckboxChecked || !allOtherCheckboxesChecked) {
+                    alert("Bitte versuche es nochmal");
+                } else {
+                    window.location.href = "cybersicherheitsmission_abgeschlossen.html";
+                }
+            }
+        </script>
+    </table>
+
+    <div class="container">
+        <p>Welche von den Emails ist eine Phishing-Mail?</p>
+        <form id="phishingForm">
+            <label><input type="checkbox"> Email 1</label>
+            <label><input type="checkbox"> Email 2</label>
+            <label><input type="checkbox"> Email 3</label>
+            <label><input type="checkbox"> Email 4</label>
+            <label><input type="checkbox"> Email 5</label>
+            <label><input type="checkbox"> Email 6</label>
+            <label><input type="checkbox"> Email 7</label>
+        </form>
+        <button id="missionComplete" onclick="checkPhishing()">Mission abgeschlossen</button>
+    </div>
+
+</body>
+</html>
